@@ -18,6 +18,10 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt pytest
       - name: Unit tests
+        env:
+          PYTHONPATH: .
         run: pytest -q
       - name: Synthetic smoke test
+        env:
+          PYTHONPATH: .
         run: python -m src.aifusion.train --config configs/model.yaml --smoke-test
