@@ -1,0 +1,37 @@
+project:
+  name: AI-FUSION-400M
+  seed: 42
+
+model:
+  vocab_size: 32000
+  hidden_size: 1024
+  num_layers: 28
+  num_attention_heads: 16
+  num_key_value_heads: 4
+  intermediate_size: 2816
+  max_seq_len: 2048
+  rope_theta: 10000.0
+  dropout: 0.0
+  tie_word_embeddings: true
+
+training:
+  batch_size: 1
+  gradient_accumulation_steps: 8
+  max_steps: 10
+  learning_rate: 0.0003
+  weight_decay: 0.1
+  warmup_steps: 1
+  grad_clip_norm: 1.0
+  precision: auto
+  output_dir: outputs/aifusion-400m
+  log_every: 1
+  save_every: 1000
+
+data:
+  train_file: data/processed/train.jsonl
+  validation_file: data/processed/validation.jsonl
+  text_key: text
+
+# Initial values are for smoke tests and architecture experiments.
+# Establish the final parameter count and GPU memory needs with a model summary
+# before any long training run.
